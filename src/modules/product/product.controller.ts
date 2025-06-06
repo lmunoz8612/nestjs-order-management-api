@@ -5,7 +5,7 @@ import { ProductDTO } from './dto/product-dto';
 import { StockDTO } from './dto/stock-dto';
 
 @Controller('api/v1/products')
-@ApiTags('Productos')
+@ApiTags('Products')
 export class ProductController {
     constructor(private productService: ProductService) {}
 
@@ -48,7 +48,7 @@ export class ProductController {
 
     @Get()
     @ApiOperation({
-        description: '<small>Get all undeleted products</small>'
+        description: 'Get all undeleted products'
     })
     @ApiResponse({
         status: 200,
@@ -76,7 +76,7 @@ export class ProductController {
     })
     @ApiParam({
         name: 'id',
-        description: 'Product id',
+        description: '<small>Product id</small>',
         required: true,
         type: Number,
     })
@@ -128,7 +128,7 @@ export class ProductController {
     @ApiParam({
         name: 'id',
         type: Number,
-        description: 'Product id to deleted',
+        description: '<small>Product id to deleted</small>',
         required: true,
     })
     @ApiResponse({
@@ -150,7 +150,7 @@ export class ProductController {
     @ApiParam({
         name: 'id',
         type: Number,
-        description: 'Product id to restored',
+        description: '<small>Product id to restored</small>',
         required: true,
     })
     @ApiResponse({

@@ -4,7 +4,7 @@ import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, ManyToOne, Pri
 
 @Entity()
 export class Order {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id?: String;
 
     @CreateDateColumn()
@@ -17,12 +17,12 @@ export class Order {
         type: Date,
         nullable: true,
     })
-    confirm?: Date;
+    confirmAt?: Date;
 
-    @ManyToOne(() => Client, client => client.orders)
+    @ManyToOne(() => Client, client => client.orders, { eager: true })
     client!: Client;
 
-    @ManyToMany(() => Product)
+    @ManyToMany(() => Product, { eager: true })
     @JoinTable({ name: 'order-products' })
     products!: Product[];
 }
